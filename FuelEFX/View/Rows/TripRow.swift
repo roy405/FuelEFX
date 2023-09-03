@@ -7,14 +7,31 @@
 
 import SwiftUI
 
-struct TripRow: View {
+struct TripRecordRow: View {
+    @Binding var tripRecord: Trip
+    var tripStore: TripStore
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text("Trip Date: \(tripRecord.tripDate)")
+            Spacer()
+            Text("Fuel Amount: \(tripRecord.endLocation)")
+            Text("Trip Purpose\(tripRecord.purpose)")
+        }
+            .padding(.vertical, 8)
     }
+    
+    private var dateFormatter: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            return formatter
+        }
 }
 
-struct TripRow_Previews: PreviewProvider {
+struct TripRecordRow_Previews: PreviewProvider {
     static var previews: some View {
-        TripRow()
+        let tripStore = TripStore()
+        TripRecordRow(tripRecord: .constant(tripStore.records[0]), tripStore: tripStore).previewLayout(.sizeThatFits)
     }
 }

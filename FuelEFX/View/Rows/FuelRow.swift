@@ -7,14 +7,31 @@
 
 import SwiftUI
 
-struct FuelRow: View {
+struct FuelRecordRow: View {
+    @Binding var fuelRecord: Fuel
+    var fuelStore: FuelStore
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text("Trip Date: \(fuelRecord.refillDate)")
+            Spacer()
+            Text("Fuel Cost: $\(fuelRecord.fuelCost)")
+            Text("Refill Location: \(fuelRecord.refillLocation)")
+        }
+            .padding(.vertical, 8)
+    }
+    
+    private var dateFormatter: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            return formatter
     }
 }
 
-struct FuelRow_Previews: PreviewProvider {
+struct FuelRecordRow_Previews: PreviewProvider {
     static var previews: some View {
-        FuelRow()
+        let fuelStore = FuelStore()
+        FuelRecordRow(fuelRecord: .constant(fuelStore.records[0]), fuelStore: fuelStore).previewLayout(.sizeThatFits)
     }
 }
