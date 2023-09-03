@@ -1,0 +1,53 @@
+
+[
+    {
+        "id": 1,
+        "tripDate": "5 Sep 23",
+        "startOdometer": 50000.0,
+        "endOdometer": 50200.0,
+        "startLocation": "Home",
+        "endLocation": "Office",
+        "purpose": "Commuting",
+        "notes": "Morning commute"
+    },
+    {
+        "id": 2,
+        "tripDate": "6 Sep 23",
+        "startOdometer": 50200.0,
+        "endOdometer": 50450.0,
+        "startLocation": "Office",
+        "endLocation": "Client Site",
+        "purpose": "Business Meeting",
+        "notes": "Meeting with client X"
+    },
+    {
+        "id": 3,
+        "tripDate": "8 Sep 23",
+        "startOdometer": 50450.0,
+        "endOdometer": 50600.0,
+        "startLocation": "Client Site",
+        "endLocation": "Office",
+        "purpose": "Business Trip",
+        "notes": "Project presentation"
+    },
+    {
+        "id": 4,
+        "tripDate": "10 Sep 23",
+        "startOdometer": 50600.0,
+        "endOdometer": 50800.0,
+        "startLocation": "Office",
+        "endLocation": "Home",
+        "purpose": "Commuting",
+        "notes": "Evening commute"
+    },
+    {
+        "id": 5,
+        "tripDate": "12 Sep 23",
+        "startOdometer": 50800.0,
+        "endOdometer": 51100.0,
+        "startLocation": "Home",
+        "endLocation": "Park",
+        "purpose": "Leisure",
+        "notes": "Picnic with family"
+    }
+]

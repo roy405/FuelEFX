@@ -8,17 +8,49 @@
 
 /* Begin PBXBuildFile section */
 		1C9F6D4D2AA4631C004CE88C /* FuelEFXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D4C2AA4631C004CE88C /* FuelEFXApp.swift */; };
-		1C9F6D4F2AA4631C004CE88C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D4E2AA4631C004CE88C /* ContentView.swift */; };
 		1C9F6D512AA4631D004CE88C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C9F6D502AA4631D004CE88C /* Assets.xcassets */; };
 		1C9F6D542AA4631D004CE88C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C9F6D532AA4631D004CE88C /* Preview Assets.xcassets */; };
+		1C9F6D5F2AA46521004CE88C /* JsonBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D5E2AA46521004CE88C /* JsonBundle.swift */; };
+		1C9F6D612AA4655F004CE88C /* Fuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D602AA4655F004CE88C /* Fuel.swift */; };
+		1C9F6D632AA46567004CE88C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D622AA46567004CE88C /* Trip.swift */; };
+		1C9F6D652AA46576004CE88C /* FuelRecords.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C9F6D642AA46576004CE88C /* FuelRecords.json */; };
+		1C9F6D672AA4658A004CE88C /* TripRecords.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C9F6D662AA4658A004CE88C /* TripRecords.json */; };
+		1C9F6D692AA46706004CE88C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D682AA46706004CE88C /* Store.swift */; };
+		1C9F6D6B2AA4670E004CE88C /* FuelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D6A2AA4670E004CE88C /* FuelStore.swift */; };
+		1C9F6D6D2AA46718004CE88C /* TripStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D6C2AA46718004CE88C /* TripStore.swift */; };
+		1C9F6D722AA468BC004CE88C /* FuelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D712AA468BC004CE88C /* FuelDetailView.swift */; };
+		1C9F6D742AA468D2004CE88C /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D732AA468D2004CE88C /* TripDetailView.swift */; };
+		1C9F6D762AA46997004CE88C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D752AA46997004CE88C /* Home.swift */; };
+		1C9F6D782AA469AA004CE88C /* FuelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D772AA469AA004CE88C /* FuelList.swift */; };
+		1C9F6D7D2AA469C6004CE88C /* TripRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D7C2AA469C6004CE88C /* TripRow.swift */; };
+		1C9F6D7F2AA469CE004CE88C /* FuelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D7E2AA469CE004CE88C /* FuelRow.swift */; };
+		1C9F6D812AA469EE004CE88C /* TripForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D802AA469EE004CE88C /* TripForm.swift */; };
+		1C9F6D832AA469F8004CE88C /* FuelForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D822AA469F8004CE88C /* FuelForm.swift */; };
+		1C9F6D852AA46A7F004CE88C /* TripList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D842AA46A7F004CE88C /* TripList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1C9F6D492AA4631C004CE88C /* FuelEFX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuelEFX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C9F6D4C2AA4631C004CE88C /* FuelEFXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEFXApp.swift; sourceTree = "<group>"; };
-		1C9F6D4E2AA4631C004CE88C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1C9F6D502AA4631D004CE88C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C9F6D532AA4631D004CE88C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1C9F6D5E2AA46521004CE88C /* JsonBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonBundle.swift; sourceTree = "<group>"; };
+		1C9F6D602AA4655F004CE88C /* Fuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fuel.swift; sourceTree = "<group>"; };
+		1C9F6D622AA46567004CE88C /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		1C9F6D642AA46576004CE88C /* FuelRecords.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FuelRecords.json; sourceTree = "<group>"; };
+		1C9F6D662AA4658A004CE88C /* TripRecords.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripRecords.json; sourceTree = "<group>"; };
+		1C9F6D682AA46706004CE88C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		1C9F6D6A2AA4670E004CE88C /* FuelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelStore.swift; sourceTree = "<group>"; };
+		1C9F6D6C2AA46718004CE88C /* TripStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStore.swift; sourceTree = "<group>"; };
+		1C9F6D712AA468BC004CE88C /* FuelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelDetailView.swift; sourceTree = "<group>"; };
+		1C9F6D732AA468D2004CE88C /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
+		1C9F6D752AA46997004CE88C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		1C9F6D772AA469AA004CE88C /* FuelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelList.swift; sourceTree = "<group>"; };
+		1C9F6D7C2AA469C6004CE88C /* TripRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRow.swift; sourceTree = "<group>"; };
+		1C9F6D7E2AA469CE004CE88C /* FuelRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelRow.swift; sourceTree = "<group>"; };
+		1C9F6D802AA469EE004CE88C /* TripForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripForm.swift; sourceTree = "<group>"; };
+		1C9F6D822AA469F8004CE88C /* FuelForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelForm.swift; sourceTree = "<group>"; };
+		1C9F6D842AA46A7F004CE88C /* TripList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +83,11 @@
 		1C9F6D4B2AA4631C004CE88C /* FuelEFX */ = {
 			isa = PBXGroup;
 			children = (
+				1C9F6D5D2AA464F6004CE88C /* Extension */,
+				1C9F6D5C2AA464EF004CE88C /* ViewModel */,
+				1C9F6D5B2AA464E7004CE88C /* View */,
+				1C9F6D5A2AA464DC004CE88C /* Model */,
 				1C9F6D4C2AA4631C004CE88C /* FuelEFXApp.swift */,
-				1C9F6D4E2AA4631C004CE88C /* ContentView.swift */,
 				1C9F6D502AA4631D004CE88C /* Assets.xcassets */,
 				1C9F6D522AA4631D004CE88C /* Preview Content */,
 			);
@@ -65,6 +100,83 @@
 				1C9F6D532AA4631D004CE88C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1C9F6D5A2AA464DC004CE88C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C9F6D602AA4655F004CE88C /* Fuel.swift */,
+				1C9F6D622AA46567004CE88C /* Trip.swift */,
+				1C9F6D642AA46576004CE88C /* FuelRecords.json */,
+				1C9F6D662AA4658A004CE88C /* TripRecords.json */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1C9F6D5B2AA464E7004CE88C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1C9F6D7B2AA469B9004CE88C /* Rows */,
+				1C9F6D702AA4688E004CE88C /* DetailView */,
+				1C9F6D6F2AA46885004CE88C /* Forms */,
+				1C9F6D6E2AA4687E004CE88C /* List */,
+				1C9F6D752AA46997004CE88C /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1C9F6D5C2AA464EF004CE88C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1C9F6D682AA46706004CE88C /* Store.swift */,
+				1C9F6D6A2AA4670E004CE88C /* FuelStore.swift */,
+				1C9F6D6C2AA46718004CE88C /* TripStore.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1C9F6D5D2AA464F6004CE88C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1C9F6D5E2AA46521004CE88C /* JsonBundle.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1C9F6D6E2AA4687E004CE88C /* List */ = {
+			isa = PBXGroup;
+			children = (
+				1C9F6D772AA469AA004CE88C /* FuelList.swift */,
+				1C9F6D842AA46A7F004CE88C /* TripList.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		1C9F6D6F2AA46885004CE88C /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				1C9F6D802AA469EE004CE88C /* TripForm.swift */,
+				1C9F6D822AA469F8004CE88C /* FuelForm.swift */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		1C9F6D702AA4688E004CE88C /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				1C9F6D712AA468BC004CE88C /* FuelDetailView.swift */,
+				1C9F6D732AA468D2004CE88C /* TripDetailView.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		1C9F6D7B2AA469B9004CE88C /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				1C9F6D7C2AA469C6004CE88C /* TripRow.swift */,
+				1C9F6D7E2AA469CE004CE88C /* FuelRow.swift */,
+			);
+			path = Rows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C9F6D542AA4631D004CE88C /* Preview Assets.xcassets in Resources */,
+				1C9F6D672AA4658A004CE88C /* TripRecords.json in Resources */,
 				1C9F6D512AA4631D004CE88C /* Assets.xcassets in Resources */,
+				1C9F6D652AA46576004CE88C /* FuelRecords.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +251,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C9F6D4F2AA4631C004CE88C /* ContentView.swift in Sources */,
+				1C9F6D692AA46706004CE88C /* Store.swift in Sources */,
+				1C9F6D782AA469AA004CE88C /* FuelList.swift in Sources */,
+				1C9F6D722AA468BC004CE88C /* FuelDetailView.swift in Sources */,
+				1C9F6D7F2AA469CE004CE88C /* FuelRow.swift in Sources */,
+				1C9F6D852AA46A7F004CE88C /* TripList.swift in Sources */,
+				1C9F6D762AA46997004CE88C /* Home.swift in Sources */,
+				1C9F6D742AA468D2004CE88C /* TripDetailView.swift in Sources */,
+				1C9F6D632AA46567004CE88C /* Trip.swift in Sources */,
+				1C9F6D5F2AA46521004CE88C /* JsonBundle.swift in Sources */,
+				1C9F6D832AA469F8004CE88C /* FuelForm.swift in Sources */,
+				1C9F6D7D2AA469C6004CE88C /* TripRow.swift in Sources */,
+				1C9F6D6D2AA46718004CE88C /* TripStore.swift in Sources */,
+				1C9F6D612AA4655F004CE88C /* Fuel.swift in Sources */,
 				1C9F6D4D2AA4631C004CE88C /* FuelEFXApp.swift in Sources */,
+				1C9F6D6B2AA4670E004CE88C /* FuelStore.swift in Sources */,
+				1C9F6D812AA469EE004CE88C /* TripForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

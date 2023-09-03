@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "refillDate": "1 Sep 23",
+        "odometerReading": 50000.0,
+        "fuelAmount": 40.0,
+        "fuelCost": 60.0,
+        "fuelType": "Gasoline",
+        "refillLocation": "Gas Station A",
+        "notes": "Regular refill"
+    },
+    {
+        "id": 2,
+        "refillDate": "20 Aug 23",
+        "odometerReading": 49500.0,
+        "fuelAmount": 35.0,
+        "fuelCost": 50.0,
+        "fuelType": "Diesel",
+        "refillLocation": "Diesel Station X",
+        "notes": "Long trip"
+    },
+    {
+        "id": 3,
+        "refillDate": "10 Aug 23",
+        "odometerReading": 49000.0,
+        "fuelAmount": 30.0,
+        "fuelCost": 45.0,
+        "fuelType": "Gasoline",
+        "refillLocation": "Gas Station B",
+        "notes": "City driving"
+    },
+    {
+        "id": 4,
+        "refillDate": "25 Jul 23",
+        "odometerReading": 48000.0,
+        "fuelAmount": 25.0,
+        "fuelCost": 40.0,
+        "fuelType": "Electric",
+        "refillLocation": "Charging Station Y",
+        "notes": "Experimenting with electric"
+    },
+    {
+        "id": 5,
+        "refillDate": "10 Jul 23",
+        "odometerReading": 47000.0,
+        "fuelAmount": 38.0,
+        "fuelCost": 55.0,
+        "fuelType": "Gasoline",
+        "refillLocation": "Gas Station C",
+        "notes": "Weekend getaway"
+    }
+]
+
