@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct FuelList: View {
+    @ObservedObject var viewModel: FuelStore
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List{
+            ForEach(viewModel.records.indices, id: \.self) { index in
+                NavigationLink(destination: FuelDetailView(fuel: viewModel.records[index])) {
+                    FuelRecordRow(fuelRecord: $viewModel.records[index], fuelStore: viewModel)
+                }
+            }
+        }
     }
 }
 
 struct FuelList_Previews: PreviewProvider {
     static var previews: some View {
-        FuelList()
+        FuelList(viewModel: FuelStore())
     }
 }
