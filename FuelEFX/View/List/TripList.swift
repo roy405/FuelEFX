@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct TripList: View {
+    @ObservedObject var viewModel: TripStore
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List{
+            ForEach(viewModel.records.indices, id: \.self) { index in
+                NavigationLink(destination: TripDetailView(trip: viewModel.records[index])) {
+                    TripRecordRow(tripRecord: $viewModel.records[index], tripStore: viewModel)
+                }
+            }
+        }
     }
 }
 
 struct TripList_Previews: PreviewProvider {
     static var previews: some View {
-        TripList()
+        TripList(viewModel: TripStore())
     }
 }
