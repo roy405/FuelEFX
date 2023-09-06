@@ -11,8 +11,7 @@ import Foundation
 class Fuel: Identifiable, Codable {
     // Properties of the Fuel class.
     let id: Int
-    let refillDateString: String
-    let refillDate: Date
+    let refillDate: String
     let odometerReading: Double
     let fuelAmount: Double
     let fuelCost: Double
@@ -23,11 +22,7 @@ class Fuel: Identifiable, Codable {
     // Initialize the Fuel object with provided values.
     init(id: Int, refillDate: String, odometerReading: Double, fuelAmount: Double, fuelCost: Double, fuelType: String, refillLocation: String, notes: String){
         self.id = id
-        // Create a DateFormatter to parse the refillDate string to appropriate format.
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMM yy"
-        self.refillDate = dateFormatter.date(from: refillDate)!
-        self.refillDateString = refillDate
+        self.refillDate = refillDate
         self.odometerReading = odometerReading
         self.fuelAmount = fuelAmount
         self.fuelCost = fuelCost

@@ -17,7 +17,7 @@ protocol Store: ObservableObject {
     func addRecord(_ entry: RecordType)
     func editRecord(_ entry: RecordType)
     func deleteRecord (_ entry: RecordType)
-    func saveRecords()
-    func loadRecords()
+    func saveRecords() throws
+    func loadRecords() throws
     func getDocumentsDirectory() -> URL
 }

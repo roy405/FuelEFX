@@ -18,7 +18,6 @@ struct Home: View {
                 VStack {
                     Text("Line Chart")
                         .font(.title)
-
                 }
                 .background(Color.white)
                 .cornerRadius(12)

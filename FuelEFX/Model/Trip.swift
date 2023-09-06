@@ -11,8 +11,7 @@ import Foundation
 class Trip: Identifiable, Codable {
     // Properties of the Fuel class.
     let id: Int
-    let tripDateString: String
-    let tripDate: Date
+    let tripDate: String
     let startOdometer: Double
     let endOdometer: Double
     let startLocation: String
@@ -24,10 +23,7 @@ class Trip: Identifiable, Codable {
     init(id: Int, tripDate: String, startOdometer: Double, endOdometer: Double, startLocation: String, endLocation: String, purpose: String, notes: String){
         self.id = id
         // Create a DateFormatter to parse the refillDate string to appropriate format.
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMM yy"
-        self.tripDate = dateFormatter.date(from: tripDate)!
-        self.tripDateString = tripDate
+        self.tripDate = tripDate
         self.startOdometer = startOdometer
         self.endOdometer = endOdometer
         self.startLocation = startLocation

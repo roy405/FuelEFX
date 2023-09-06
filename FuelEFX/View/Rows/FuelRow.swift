@@ -11,15 +11,42 @@ struct FuelRecordRow: View {
     @Binding var fuelRecord: Fuel
     var fuelStore: FuelStore
     
+    
     var body: some View {
         HStack {
-            Text("Trip Date: \(fuelRecord.refillDate)")
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Trip Date:")
+                    .font(.system(size: 12)) // Smaller label font size
+                    .foregroundColor(.secondary)
+                Text(fuelRecord.refillDate)
+                    .font(.system(size: 14)) // Smaller value font size
+                    .fontWeight(.semibold)
+            }
+            
             Spacer()
-            Text("Fuel Cost: $\(fuelRecord.fuelCost)")
-            Text("Refill Location: \(fuelRecord.refillLocation)")
+            
+            VStack(alignment: .trailing, spacing: 4) {
+                Text("Fuel Cost:")
+                    .font(.system(size: 12)) // Smaller label font size
+                    .foregroundColor(.secondary)
+                Text("$\(fuelRecord.fuelCost, specifier: "%.2f")")
+                    .font(.system(size: 14)) // Smaller value font size
+                    .fontWeight(.semibold)
+            }
+            
+            VStack(alignment: .trailing, spacing: 4) {
+                Text("Refill Location:")
+                    .font(.system(size: 12)) // Smaller label font size
+                    .foregroundColor(.secondary)
+                Text(fuelRecord.refillLocation)
+                    .font(.system(size: 14)) // Smaller value font size
+                    .fontWeight(.semibold)
+            }
         }
-            .padding(.vertical, 8)
+        .padding(.vertical, 12)
+        .padding(.horizontal, 16)
     }
+
     
     private var dateFormatter: DateFormatter {
             let formatter = DateFormatter()

@@ -13,12 +13,37 @@ struct TripRecordRow: View {
     
     var body: some View {
         HStack {
-            Text("Trip Date: \(tripRecord.tripDate)")
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Trip Date:")
+                    .font(.system(size: 12))
+                    .foregroundColor(.secondary)
+                Text(tripRecord.tripDate)
+                    .font(.system(size: 14))
+                    .fontWeight(.semibold)
+            }
+            
             Spacer()
-            Text("Fuel Amount: \(tripRecord.endLocation)")
-            Text("Trip Purpose\(tripRecord.purpose)")
+            
+            VStack(alignment: .trailing, spacing: 4) {
+                Text("Destination:")
+                    .font(.system(size: 12))
+                    .foregroundColor(.secondary)
+                Text(tripRecord.endLocation)
+                    .font(.system(size: 14))
+                    .fontWeight(.semibold)
+            }
+            
+            VStack(alignment: .trailing, spacing: 4) {
+                Text("Trip Purpose:")
+                    .font(.system(size: 12))
+                    .foregroundColor(.secondary)
+                Text(tripRecord.purpose)
+                    .font(.system(size: 14))
+                    .fontWeight(.semibold)
+            }
         }
-            .padding(.vertical, 8)
+        .padding(.vertical, 12)
+        .padding(.horizontal, 16)
     }
     
     private var dateFormatter: DateFormatter {

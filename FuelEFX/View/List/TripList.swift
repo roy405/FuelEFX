@@ -17,6 +17,12 @@ struct TripList: View {
                     TripRecordRow(tripRecord: $viewModel.records[index], tripStore: viewModel)
                 }
             }
+        }.alert(item: $viewModel.tripError) { error in
+            Alert(
+                title: Text("Error"),
+                message: Text(error.localizedDescription),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }

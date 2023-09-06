@@ -18,6 +18,10 @@ struct TripForm: View {
     @State private var purpose = ""
     @State private var notes = ""
     
+    @State private var showAlert = false
+    @State private var alertTitle = "Error"
+    @State private var alertMessage = "An error occured"
+    
     var body: some View {
         Form {
             Section(header: Text("Fuel Entry Details")) {
@@ -37,11 +41,34 @@ struct TripForm: View {
             }
             
             Button("Save") {
-                saveTripEntry()
+                if isValidInput(){
+                    saveTripEntry()
+                }
             }
         }
         .navigationTitle("Add Fuel Entry")
+        .alert(isPresented: $showAlert){
+            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        }
       }
+    
+    private func isValidInput() -> Bool {
+        if startOdometer.isEmpty || endOdometer.isEmpty || startLocation.isEmpty || endLocation.isEmpty || purpose.isEmpty {
+                    alertTitle = "Validation Error"
+                    alertMessage = "All fields are required. Please fill them out before saving."
+                    showAlert = true
+                    return false
+                }
+                
+                guard let _ = Double(startOdometer), let _ = Double(endOdometer) else {
+                    alertTitle = "Input Error"
+                    alertMessage = "Start and End Odometer readings must be valid numbers."
+                    showAlert = true
+                    return false
+                }
+                
+                return true
+    }
     
     private func saveTripEntry(){
         let dateFormatter = DateFormatter()
@@ -51,8 +78,8 @@ struct TripForm: View {
             fatalError("Invalid Input! Please fill form fields with appropriate data.")
         }
         let stringDate = dateFormatter.string(from: date)
-        
-        let tripRecord = Trip(id: 0,
+        let newId = viewModel.records.count + 1
+        let tripRecord = Trip(id: newId,
                              tripDate: stringDate,
                              startOdometer: odometerStart,
                              endOdometer: odometerEnd,

@@ -36,7 +36,7 @@
         "fuelAmount": 25.0,
         "fuelCost": 40.0,
         "fuelType": "Electric",
-        "refillLocation": "Charging Station Y",
+        "refillLocation": "Gas Station Y",
         "notes": "Experimenting with electric"
     },
     {

@@ -17,6 +17,12 @@ struct FuelList: View {
                     FuelRecordRow(fuelRecord: $viewModel.records[index], fuelStore: viewModel)
                 }
             }
+        }.alert(item: $viewModel.fuelError) { error in
+            Alert(
+                title: Text("Error"),
+                message: Text(error.localizedDescription),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }

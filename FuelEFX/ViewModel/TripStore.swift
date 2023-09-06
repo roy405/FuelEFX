@@ -11,43 +11,91 @@ class TripStore: ObservableObject, Store {
     typealias RecordType = Trip
     
     @Published var records: [Trip]
-    var filename = "TripRecords.json"
+    @Published var tripError: StoreError?
     
-    init(){
+    let filename = "TripRecords.json"
+    
+    init() {
         records = []
-        loadRecords()
+        do {
+            try loadRecords()
+        } catch let error as StoreError {
+            tripError = error
+        } catch {
+            print("Unexpected error: \(error).")
+            tripError = StoreError.loadingFailed
+        }
     }
     
     func addRecord(_ entry: Trip) {
         records.append(entry)
-        saveRecords()
+        do{
+            try saveRecords()
+        } catch let error as StoreError{
+            tripError = error
+        } catch {
+            print("Unexpected error: \(error)")
+            tripError = StoreError.encodeFailed
+        }
     }
     
     func editRecord(_ entry: Trip) {
         if let index = records.firstIndex(where: { $0.id == entry.id }) {
             records[index] = entry
-            saveRecords()
+            do{
+                try saveRecords()
+            } catch let error as StoreError{
+                tripError = error
+            } catch {
+                print("Unexpected error: \(error)")
+                tripError = StoreError.encodeFailed
+            }
         }
     }
     
     func deleteRecord(_ entry: Trip) {
         records.removeAll { $0.id == entry.id }
-        saveRecords()
-    }
-    
-    func saveRecords() {
-        do {
-            let data = Bundle.main.encode(object: records)
-            let url = getDocumentsDirectory().appendingPathComponent("TripRecords.json")
-            try data?.write(to: url)
+        do{
+            try saveRecords()
+        } catch let error as StoreError{
+            tripError = error
         } catch {
-            print("Error saving trip entries: \(error)")
+            print("Unexpected error: \(error)")
+            tripError = StoreError.encodeFailed
         }
     }
     
-    func loadRecords() {
-        let decodedData: [Trip] = Bundle.main.decode(filename: filename, as: [Trip].self)
-        records = decodedData
+    func saveRecords() throws {
+        do {
+            guard let data = try Bundle.main.encode(object: records) else {
+                print("Failed to encode records to data.")
+                return
+            }
+            
+            let url = getDocumentsDirectory().appendingPathComponent(filename)
+            
+            do {
+                try data.write(to: url, options: .atomicWrite)
+                print("Successfully saved data to \(url)")
+            } catch {
+                print("Error saving trip entries to \(url): \(error)")
+            }
+        } catch StoreError.encodeFailed {
+            self.tripError = StoreError.encodeFailed
+        }
+    }
+    
+    func loadRecords() throws {
+        do{
+            let decodedData: [Trip] = try Bundle.main.decode(filename: filename, as: [Trip].self)
+            records = decodedData
+        } catch StoreError.loadingFailed {
+            self.tripError = StoreError.loadingFailed
+        }catch StoreError.nofilefound {
+            self.tripError = StoreError.nofilefound
+        }catch StoreError.decodefailed{
+            self.tripError = StoreError.decodefailed
+        }
     }
     
     func getDocumentsDirectory() -> URL {

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FuelForm: View {
+    @EnvironmentObject var fuelStore: FuelStore
     @ObservedObject var viewModel: FuelStore
     
     @State private var date = Date()
@@ -17,6 +18,10 @@ struct FuelForm: View {
     @State private var fuelType = ""
     @State private var location = ""
     @State private var notes = ""
+    
+    @State private var showAlert = false
+    @State private var alertTitle = "Error"
+    @State private var alertMessage = "An error occured"
     
     var body: some View {
         Form {
@@ -38,14 +43,35 @@ struct FuelForm: View {
             }
             
             Button("Save") {
-                saveFuelEntry()
+                if isValidInput(){
+                    saveFuelEntry()
+                }
+                
             }
         }
         .navigationTitle("Add Fuel Entry")
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        }
     }
     
-    
-    
+    private func isValidInput() -> Bool {
+        if odometerReading.isEmpty || fuelAmount.isEmpty || fuelCost.isEmpty || fuelType.isEmpty || location.isEmpty {
+            alertTitle = "Validation Error"
+            alertMessage = "All fields are required. Please fill them out before saving."
+            showAlert = true
+            return false
+        }
+        
+        guard let _ = Double(odometerReading), let _ = Double(fuelAmount), let _ = Double(fuelCost) else {
+            alertTitle = "Input Error"
+            alertMessage = "Odometer reading, fuel amount, and fuel cost must be valid numbers."
+            showAlert = true
+            return false
+        }
+        return true
+    }
+        
     private func saveFuelEntry() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM yy"
@@ -57,8 +83,9 @@ struct FuelForm: View {
         }
         
         let stringDate = dateFormatter.string(from: date)
+        let newId = viewModel.records.count + 1
         
-        let fuelRecord = Fuel(id: 0, refillDate: stringDate, odometerReading: odometer, fuelAmount: amount, fuelCost: cost, fuelType: fuelType, refillLocation: location, notes: notes)
+        let fuelRecord = Fuel(id: newId, refillDate: stringDate, odometerReading: odometer, fuelAmount: amount, fuelCost: cost, fuelType: fuelType, refillLocation: location, notes: notes)
         
         viewModel.addRecord(fuelRecord)
     }

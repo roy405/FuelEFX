@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C5D9D622AA70EAE0086F3AA /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5D9D612AA70EAE0086F3AA /* Exceptions.swift */; };
 		1C9F6D4D2AA4631C004CE88C /* FuelEFXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D4C2AA4631C004CE88C /* FuelEFXApp.swift */; };
 		1C9F6D512AA4631D004CE88C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C9F6D502AA4631D004CE88C /* Assets.xcassets */; };
 		1C9F6D542AA4631D004CE88C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C9F6D532AA4631D004CE88C /* Preview Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C5D9D612AA70EAE0086F3AA /* Exceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
 		1C9F6D492AA4631C004CE88C /* FuelEFX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuelEFX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C9F6D4C2AA4631C004CE88C /* FuelEFXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEFXApp.swift; sourceTree = "<group>"; };
 		1C9F6D502AA4631D004CE88C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				1C9F6D682AA46706004CE88C /* Store.swift */,
 				1C9F6D6A2AA4670E004CE88C /* FuelStore.swift */,
 				1C9F6D6C2AA46718004CE88C /* TripStore.swift */,
+				1C5D9D612AA70EAE0086F3AA /* Exceptions.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C5D9D622AA70EAE0086F3AA /* Exceptions.swift in Sources */,
 				1C9F6D692AA46706004CE88C /* Store.swift in Sources */,
 				1C9F6D782AA469AA004CE88C /* FuelList.swift in Sources */,
 				1C9F6D722AA468BC004CE88C /* FuelDetailView.swift in Sources */,
