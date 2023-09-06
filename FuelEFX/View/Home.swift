@@ -38,6 +38,7 @@ struct Home: View {
         }
 }
 
+// SwiftUI Preview for the Home(charts).
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home()

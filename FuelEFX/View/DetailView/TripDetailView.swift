@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+// A SwiftUI view displaying detailed information about a specific trip record.
 struct TripDetailView: View {
-    @EnvironmentObject var tripStore: TripStore
-    @State private var isEditing = false
+    @EnvironmentObject var tripStore: TripStore // THe main store for trip records.
+    @State private var isEditing = false // State to track whether the view is in editing mode.
     
-    // Make these @State properties so they can be edited
+    // State properties to hold editable fields.
     @State private var tripDate: String
     @State private var startOdometer: String
     @State private var endOdometer: String
@@ -20,12 +21,14 @@ struct TripDetailView: View {
     @State private var purpose: String
     @State private var notes: String
     
-    var trip: Trip
+    var trip: Trip // The trip record being displayed/edited.
     
+    // State properties for displaying alerts.
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     
+    // Initializing the view with a fuel record and setting initial values for editable fields.
     init(trip: Trip) {
         self.trip = trip
         _tripDate = State(initialValue: trip.tripDate)
@@ -73,7 +76,7 @@ struct TripDetailView: View {
                     Text(notes)
                 }
             }
-            
+            // Buttons for editing, saving, and deleting trip records.
             Group {
                 if isEditing {
                     Button("Save Changes") {
@@ -89,15 +92,14 @@ struct TripDetailView: View {
                     deleteTripRecord()
                 }
             }
+            // Configuring alert and navigation bar title.
             .alert(isPresented: $showAlert){
                 Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
         }.navigationBarTitle("Trip Record Details")
     }
     
-    
-
-    
+    // Function to save changes made to the trip record.
     private func saveChanges() {
         guard validateFields()else{
             return
@@ -117,6 +119,7 @@ struct TripDetailView: View {
         isEditing = false
     }
     
+    // Function to validate the fields before saving.
     private func validateFields() -> Bool {
         guard !tripDate.isEmpty, !startLocation.isEmpty, !endLocation.isEmpty, !purpose.isEmpty else {
             alertTitle = "Missing Fields"
@@ -135,11 +138,13 @@ struct TripDetailView: View {
         return true
     }
     
+    // Function to delete the current trip record.
     private func deleteTripRecord() {
         tripStore.deleteRecord(trip)
     }
 }
 
+// SwiftUI Preview for the FuelDetailView.
 struct TripDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let tripStore = TripStore()

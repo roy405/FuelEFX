@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+// A SwiftUI view displaying detailed information about a specific fuel record.
 struct FuelDetailView: View {
-    @EnvironmentObject var fuelStore: FuelStore
-    @State private var isEditing = false
+    @EnvironmentObject var fuelStore: FuelStore // The main store for fuel records.
+    @State private var isEditing = false // State to track whether the view is in editing mode.
     
-    // Make these @State properties so they can be edited
+    // State properties to hold editable fields.
     @State private var refillDate: String
     @State private var odometerReading: String
     @State private var fuelAmount: String
@@ -20,12 +21,14 @@ struct FuelDetailView: View {
     @State private var refillLocation: String
     @State private var notes: String
         
-    var fuel: Fuel
+    var fuel: Fuel // The fuel record being displayed/edited.
     
+    // State properties for displaying alerts.
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     
+    // Initializing the view with a fuel record and setting initial values for editable fields.
     init(fuel: Fuel) {
         self.fuel = fuel
         _refillDate = State(initialValue: fuel.refillDate)
@@ -81,6 +84,7 @@ struct FuelDetailView: View {
                 }
             }
     
+           // Buttons for editing, saving, and deleting fuel records.
             Group {
                 if isEditing {
                     Button("Save Changes") {
@@ -97,12 +101,14 @@ struct FuelDetailView: View {
                 }
             }
         }
+        // Configuring alert and navigation bar title.
         .alert(isPresented: $showAlert){
             Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
         .navigationBarTitle("Fuel Record Details")
     }
 
+    // Function to save changes made to the fuel record.
     private func saveChanges() {
         guard validateFields()else{
             return
@@ -123,6 +129,7 @@ struct FuelDetailView: View {
         isEditing = false
     }
     
+    // Function to validate the fields before saving.
     private func validateFields() -> Bool {
         // Simple validations. You can expand on these as needed.
         guard !refillDate.isEmpty, !fuelType.isEmpty, !refillLocation.isEmpty else {
@@ -142,11 +149,13 @@ struct FuelDetailView: View {
         return true
     }
     
+    // Function to delete the current fuel record.
     private func deleteFuelRecord() {
         fuelStore.deleteRecord(fuel)
     }
 }
 
+// SwiftUI Preview for the FuelDetailView.
 struct FuelDetailView_Previews: PreviewProvider {
     static var previews: some View{
         let fuelStore = FuelStore()

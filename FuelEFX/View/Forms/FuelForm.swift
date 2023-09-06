@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+//SwiftUI view representing a form to input fuel details.
 struct FuelForm: View {
-    @EnvironmentObject var fuelStore: FuelStore
+    @EnvironmentObject var fuelStore: FuelStore //ViewModel to manage trip records
     @ObservedObject var viewModel: FuelStore
     
+    // State properties to hold user input.
     @State private var date = Date()
     @State private var odometerReading = ""
     @State private var fuelAmount = ""
@@ -19,6 +21,7 @@ struct FuelForm: View {
     @State private var location = ""
     @State private var notes = ""
     
+    // State properties for displaying alerts.
     @State private var showAlert = false
     @State private var alertTitle = "Error"
     @State private var alertMessage = "An error occured"
@@ -41,7 +44,7 @@ struct FuelForm: View {
                 TextEditor(text: $notes)
                     .frame(height: 100)
             }
-            
+            //Button to save fuel details after validation
             Button("Save") {
                 if isValidInput(){
                     saveFuelEntry()
@@ -50,11 +53,13 @@ struct FuelForm: View {
             }
         }
         .navigationTitle("Add Fuel Entry")
+        // Configuring the alert.
         .alert(isPresented: $showAlert) {
             Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
     }
     
+    // Function to validate user input before saving.
     private func isValidInput() -> Bool {
         if odometerReading.isEmpty || fuelAmount.isEmpty || fuelCost.isEmpty || fuelType.isEmpty || location.isEmpty {
             alertTitle = "Validation Error"
@@ -71,7 +76,8 @@ struct FuelForm: View {
         }
         return true
     }
-        
+    
+    // Function to save a new fuel entry to the FuelStore
     private func saveFuelEntry() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM yy"
@@ -91,6 +97,7 @@ struct FuelForm: View {
     }
 }
 
+// SwiftUI Preview for the FuelForm.
 struct FuelForm_Previews: PreviewProvider {
     static var previews: some View {
         FuelForm(viewModel: FuelStore())

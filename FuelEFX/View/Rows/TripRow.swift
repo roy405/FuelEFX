@@ -7,9 +7,10 @@
 
 import SwiftUI
 
+// A SwiftUI view representing a single trip record in a row format.
 struct TripRecordRow: View {
-    @Binding var tripRecord: Trip
-    var tripStore: TripStore
+    @Binding var tripRecord: Trip // A binding to the trip record displayed by this view.
+    var tripStore: TripStore // The store containing all trip records.
     
     var body: some View {
         HStack {
@@ -46,6 +47,7 @@ struct TripRecordRow: View {
         .padding(.horizontal, 16)
     }
     
+    // DateFormatter to format trip dates.
     private var dateFormatter: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
@@ -54,6 +56,7 @@ struct TripRecordRow: View {
         }
 }
 
+// SwiftUI Preview for the TripRecordRow view.
 struct TripRecordRow_Previews: PreviewProvider {
     static var previews: some View {
         let tripStore = TripStore()

@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+// SwiftUI view representing a form to input trip details.
 struct TripForm: View {
-    @ObservedObject var viewModel: TripStore
+    @ObservedObject var viewModel: TripStore // ViewModel to manage trip records.
     
+    // State properties to hold user input.
     @State private var date = Date()
     @State private var startOdometer = ""
     @State private var endOdometer = ""
@@ -18,6 +20,7 @@ struct TripForm: View {
     @State private var purpose = ""
     @State private var notes = ""
     
+    // State properties for displaying alerts.
     @State private var showAlert = false
     @State private var alertTitle = "Error"
     @State private var alertMessage = "An error occured"
@@ -39,7 +42,7 @@ struct TripForm: View {
                 TextEditor(text: $notes)
                     .frame(height: 100)
             }
-            
+            // Button to save trip details after validation.
             Button("Save") {
                 if isValidInput(){
                     saveTripEntry()
@@ -47,11 +50,13 @@ struct TripForm: View {
             }
         }
         .navigationTitle("Add Fuel Entry")
+        // Configuring the alert.
         .alert(isPresented: $showAlert){
             Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
       }
     
+    // Function to validate user input before saving.
     private func isValidInput() -> Bool {
         if startOdometer.isEmpty || endOdometer.isEmpty || startLocation.isEmpty || endLocation.isEmpty || purpose.isEmpty {
                     alertTitle = "Validation Error"
@@ -70,6 +75,7 @@ struct TripForm: View {
                 return true
     }
     
+    // Function to save a new trip entry to the TripStore.
     private func saveTripEntry(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM yy"
@@ -91,7 +97,7 @@ struct TripForm: View {
     }
 }
 
-
+// SwiftUI Preview for the TripForm.
 struct TripForm_Previews: PreviewProvider {
     static var previews: some View {
         TripForm(viewModel: TripStore())
