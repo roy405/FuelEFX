@@ -6,30 +6,33 @@
 //
 
 import SwiftUI
-
+// Main application entry-point
 @main
 struct FuelEFXApp: App {
-    @StateObject private var fuelStore = FuelStore()
-    @StateObject private var tripStore = TripStore()
+    @StateObject private var fuelStore = FuelStore() //Fuel Viewmodel
+    @StateObject private var tripStore = TripStore() //Trup Viewmodel
         
     var body: some Scene {
         WindowGroup {
+            //Tab-based navigation for the overall application
             TabView {
                 ScrollView{
+                    // Home (Dashboard) View with all Charts
                     Home()
                 }
             .tabItem{
             Label("Home", systemImage: "house.fill")
                 }
             NavigationView {
+                // Fuel List View
                 FuelList(viewModel: fuelStore)
                 .navigationTitle("Fuel Refill History")
             }
             .tabItem {
                 Label("Fuel List", systemImage: "list.clipboard")
                 }
-                    
             NavigationView {
+                // Trip List View
                 TripList(viewModel: tripStore)
                 .navigationTitle("Trip History")
             }
@@ -37,16 +40,18 @@ struct FuelEFXApp: App {
                 Label("Trip History", systemImage: "doc.fill")
                 }
             NavigationView {
-                    TripForm(viewModel: tripStore)
-                }
+                // Trip Form View
+                TripForm(viewModel: tripStore)
+            }
             .tabItem{
-                    Label("Add Trip", systemImage:"road.lanes.curved.left")
+                Label("Add Trip", systemImage:"road.lanes.curved.left")
                 }
-                NavigationView{
-                    FuelForm(viewModel: fuelStore)
-                }
-                .tabItem{
-                    Label("Add Fuel", systemImage: "fuelpump.circle.fill")
+            NavigationView{
+                // Fuel Form View
+                FuelForm(viewModel: fuelStore)
+            }
+            .tabItem{
+                Label("Add Fuel", systemImage: "fuelpump.circle.fill")
                 }
             }
         }

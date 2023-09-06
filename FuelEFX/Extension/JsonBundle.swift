@@ -16,11 +16,7 @@ extension Bundle {
     /// - type: The type of the object to be decoded.
     /// - Returns: The decoded object of the given type.
     /// - Throws: An error if there is an issue with locating the file, reading its data, or decoding its contents.
-    func decode<T: Decodable>(filename: String, as type: T.Type) throws -> T {
-        // Try to retrieve the URL for the specified filename.
-      guard let url = self.url(forResource: filename, withExtension: nil) else {
-          throw StoreError.nofilefound
-      }
+    func decode<T: Decodable>(url: URL, as type: T.Type) throws -> T {
         // Attempt to retrieve data from the URL.
       guard let data = try? Data(contentsOf: url) else {
           throw StoreError.loadingFailed

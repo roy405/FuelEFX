@@ -81,7 +81,10 @@ struct TripForm: View {
         dateFormatter.dateFormat = "d MMM yy"
         guard let odometerStart = Double(startOdometer),
               let odometerEnd = Double(endOdometer) else {
-            fatalError("Invalid Input! Please fill form fields with appropriate data.")
+            alertTitle = "Input Error"
+            alertMessage = "Start and End Odometer readings must be valid numbers."
+            showAlert = true
+            return
         }
         let stringDate = dateFormatter.string(from: date)
         let newId = viewModel.records.count + 1
@@ -94,6 +97,19 @@ struct TripForm: View {
                              purpose: purpose,
                              notes: notes)
         viewModel.addRecord(tripRecord)
+        
+        alertTitle = "Success"
+        alertMessage = "Trip entry has been saved successfully."
+        showAlert = true
+        
+        // Clear the form fields after saving
+        date = Date()
+        startOdometer = ""
+        endOdometer = ""
+        startLocation = ""
+        endLocation = ""
+        purpose = ""
+        notes = ""
     }
 }
 

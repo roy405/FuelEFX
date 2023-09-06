@@ -84,16 +84,38 @@ struct FuelForm: View {
         guard let odometer = Double(odometerReading),
               let amount = Double(fuelAmount),
               let cost = Double(fuelCost) else {
-            // Handle invalid input
-            fatalError("Invalid Input! Please fill form fields with appropriate data.")
+            alertTitle = "Input Error"
+            alertMessage = "Start and End Odometer readings must be valid numbers."
+            showAlert = true
+            return
         }
         
         let stringDate = dateFormatter.string(from: date)
         let newId = viewModel.records.count + 1
         
-        let fuelRecord = Fuel(id: newId, refillDate: stringDate, odometerReading: odometer, fuelAmount: amount, fuelCost: cost, fuelType: fuelType, refillLocation: location, notes: notes)
+        let fuelRecord = Fuel(id: newId,
+                              refillDate: stringDate,
+                              odometerReading: odometer,
+                              fuelAmount: amount,
+                              fuelCost: cost,
+                              fuelType: fuelType,
+                              refillLocation: location,
+                              notes: notes)
         
         viewModel.addRecord(fuelRecord)
+        
+        alertTitle = "Success"
+        alertMessage = "Fuel entry has been saved successfully."
+        showAlert = true
+        
+        // Clear the form fields after saving
+        date = Date()
+        odometerReading = ""
+        fuelAmount = ""
+        fuelCost = ""
+        fuelType = ""
+        location = ""
+        notes = ""
     }
 }
 

@@ -102,12 +102,19 @@ class FuelStore: ObservableObject, Store {
     // Load records from file.
     func loadRecords() throws {
         do{
-            let decodedData: [Fuel] = try Bundle.main.decode(filename: filename, as: [Fuel].self)
-            records = decodedData
+            let documentsURL = getDocumentsDirectory().appendingPathComponent(filename)
+            if FileManager.default.fileExists(atPath: documentsURL.path) {
+                let decodedData: [Fuel] = try Bundle.main.decode(url: documentsURL, as: [Fuel].self)
+                records = decodedData
+            } else {
+                guard let bundledURL = Bundle.main.url(forResource: filename, withExtension: nil) else {
+                    throw StoreError.nofilefound
+                }
+                let decodedData: [Fuel] = try Bundle.main.decode(url: bundledURL, as: [Fuel].self)
+                records = decodedData
+            }
         } catch StoreError.loadingFailed {
             self.fuelError = StoreError.loadingFailed
-        }catch StoreError.nofilefound {
-            self.fuelError = StoreError.nofilefound
         }catch StoreError.decodefailed{
             self.fuelError = StoreError.decodefailed
         }

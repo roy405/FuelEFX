@@ -101,8 +101,17 @@ class TripStore: ObservableObject, Store {
     // Load records from file
     func loadRecords() throws {
         do{
-            let decodedData: [Trip] = try Bundle.main.decode(filename: filename, as: [Trip].self)
-            records = decodedData
+            let documentsURL = getDocumentsDirectory().appendingPathComponent(filename)
+            if FileManager.default.fileExists(atPath: documentsURL.path) {
+                let decodedData: [Trip] = try Bundle.main.decode(url: documentsURL, as: [Trip].self)
+                records = decodedData
+            } else {
+                guard let bundledURL = Bundle.main.url(forResource: filename, withExtension: nil) else {
+                    throw StoreError.nofilefound
+                }
+                let decodedData: [Trip] = try Bundle.main.decode(url: bundledURL, as: [Trip].self)
+                records = decodedData
+            }
         } catch StoreError.loadingFailed {
             self.tripError = StoreError.loadingFailed
         }catch StoreError.nofilefound {
