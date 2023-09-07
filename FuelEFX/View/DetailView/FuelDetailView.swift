@@ -88,7 +88,16 @@ struct FuelDetailView: View {
             Group {
                 if isEditing {
                     Button("Save Changes") {
-                        saveChanges()
+                        let validationResult = fuelStore.validateEditFields(refillDate: refillDate, odometerReading: odometerReading, fuelAmount: fuelAmount, fuelCost: fuelCost, fuelType: fuelType, refillLocation: refillLocation)
+                                                
+                        if validationResult.isValid {
+                            _ = fuelStore.saveEditedFuelChanges(fuel: fuel, refillDate: refillDate, odometerReading: odometerReading, fuelAmount: fuelAmount, fuelCost: fuelCost, fuelType: fuelType, refillLocation: refillLocation, notes: notes)
+                            isEditing = false
+                        } else {
+                        alertTitle = validationResult.alertTitle
+                        alertMessage = validationResult.alertMessage
+                        showAlert = true
+                        }
                     }
                 } else {
                     Button("Edit") {
@@ -106,47 +115,6 @@ struct FuelDetailView: View {
             Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
         .navigationBarTitle("Fuel Record Details")
-    }
-
-    // Function to save changes made to the fuel record.
-    private func saveChanges() {
-        guard validateFields()else{
-            return
-        }
-        
-        let editedFuelRecord = Fuel(
-            id: fuel.id,
-            refillDate: refillDate,
-            odometerReading: Double(odometerReading) ?? 0.0,
-            fuelAmount: Double(fuelAmount) ?? 0.0,
-            fuelCost: Double(fuelCost) ?? 0.0,
-            fuelType: fuelType,
-            refillLocation: refillLocation,
-            notes: notes
-        )
-        
-        fuelStore.editRecord(editedFuelRecord)
-        isEditing = false
-    }
-    
-    // Function to validate the fields before saving.
-    private func validateFields() -> Bool {
-        // Simple validations. You can expand on these as needed.
-        guard !refillDate.isEmpty, !fuelType.isEmpty, !refillLocation.isEmpty else {
-            alertTitle = "Missing Fields"
-            alertMessage = "Please fill all the fields."
-            showAlert = true
-            return false
-        }
-        
-        guard Double(odometerReading) != nil, Double(fuelAmount) != nil, Double(fuelCost) != nil else {
-            alertTitle = "Invalid Input"
-            alertMessage = "Please ensure Odometer Reading, Fuel Amount and Fuel Cost fields contain valid numbers."
-            showAlert = true
-            return false
-        }
-        
-        return true
     }
     
     // Function to delete the current fuel record.

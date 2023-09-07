@@ -80,7 +80,15 @@ struct TripDetailView: View {
             Group {
                 if isEditing {
                     Button("Save Changes") {
-                        saveChanges()
+                        let validationResult = tripStore.validatedEditFields(tripDate: tripDate, startOdometer: startOdometer, endOdometer: endOdometer, startLocation: startLocation, endLocation: endLocation, purpose: purpose, notes: notes)
+                        if validationResult.isValid {
+                            _ = tripStore.saveEditedTripChanges(trip: trip, tripDate: tripDate, startOdometer: startOdometer, endOdometer: endOdometer, startLocation: startLocation, endLocation: endLocation, purpose: purpose, notes: notes)
+                            isEditing = false
+                        } else {
+                            alertTitle = validationResult.alertTitle
+                            alertMessage = validationResult.alertMessage
+                            showAlert = true
+                        }
                     }
                 } else {
                     Button("Edit") {
@@ -98,46 +106,7 @@ struct TripDetailView: View {
             }
         }.navigationBarTitle("Trip Record Details")
     }
-    
-    // Function to save changes made to the trip record.
-    private func saveChanges() {
-        guard validateFields()else{
-            return
-        }
         
-        let editedTripRecord = Trip(
-            id: trip.id,
-            tripDate: tripDate,
-            startOdometer: Double(startOdometer) ?? 0.0,
-            endOdometer: Double(endOdometer) ?? 0.0,
-            startLocation: startLocation,
-            endLocation: endLocation,
-            purpose: purpose,
-            notes: notes
-        )
-        tripStore.editRecord(editedTripRecord)
-        isEditing = false
-    }
-    
-    // Function to validate the fields before saving.
-    private func validateFields() -> Bool {
-        guard !tripDate.isEmpty, !startLocation.isEmpty, !endLocation.isEmpty, !purpose.isEmpty else {
-            alertTitle = "Missing Fields"
-            alertMessage = "Please fill all the fields"
-            showAlert = true
-            return false
-        }
-        
-        guard Double(startOdometer) != nil, Double(endOdometer) != nil else {
-            alertTitle = "Invalid Input"
-            alertMessage = "Please ensure Start and End Odometer fields contain valid numbers."
-            showAlert = true
-            return false
-        }
-        
-        return true
-    }
-    
     // Function to delete the current trip record.
     private func deleteTripRecord() {
         tripStore.deleteRecord(trip)
