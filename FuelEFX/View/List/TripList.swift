@@ -9,7 +9,7 @@ import SwiftUI
 
 // SwiftUI view that represents a list of trip records.
 struct TripList: View {
-    @ObservedObject var viewModel: TripStore // ViewModel to manage trip records.
+    @EnvironmentObject var viewModel: TripStore // ViewModel to manage trip records.
     
     var body: some View {
         List{
@@ -36,6 +36,6 @@ struct TripList: View {
 // SwiftUI Preview for the TripList.
 struct TripList_Previews: PreviewProvider {
     static var previews: some View {
-        TripList(viewModel: TripStore())
+        TripList().environmentObject(TripStore())
     }
 }

@@ -128,7 +128,7 @@ struct TripDetailView: View {
             return false
         }
         
-        guard Double(startOdometer) != nil, Double(endLocation) != nil else {
+        guard Double(startOdometer) != nil, Double(endOdometer) != nil else {
             alertTitle = "Invalid Input"
             alertMessage = "Please ensure Start and End Odometer fields contain valid numbers."
             showAlert = true

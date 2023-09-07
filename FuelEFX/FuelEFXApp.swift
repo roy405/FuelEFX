@@ -25,17 +25,19 @@ struct FuelEFXApp: App {
                 }
             NavigationView {
                 // Fuel List View
-                FuelList(viewModel: fuelStore)
+                FuelList()
                 .navigationTitle("Fuel Refill History")
             }
+            .environmentObject(fuelStore)
             .tabItem {
                 Label("Fuel List", systemImage: "list.clipboard")
                 }
             NavigationView {
                 // Trip List View
-                TripList(viewModel: tripStore)
+                TripList()
                 .navigationTitle("Trip History")
             }
+            .environmentObject(tripStore)
             .tabItem {
                 Label("Trip History", systemImage: "doc.fill")
                 }
@@ -43,6 +45,7 @@ struct FuelEFXApp: App {
                 // Trip Form View
                 TripForm(viewModel: tripStore)
             }
+            .environmentObject(tripStore)
             .tabItem{
                 Label("Add Trip", systemImage:"road.lanes.curved.left")
                 }
@@ -50,6 +53,7 @@ struct FuelEFXApp: App {
                 // Fuel Form View
                 FuelForm(viewModel: fuelStore)
             }
+            .environmentObject(fuelStore)
             .tabItem{
                 Label("Add Fuel", systemImage: "fuelpump.circle.fill")
                 }
