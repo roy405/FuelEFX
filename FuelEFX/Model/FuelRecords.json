@@ -2,7 +2,7 @@
     {
         "id": 1,
         "refillDate": "1 Sep 23",
-        "odometerReading": 50000.0,
+        "odometerReading": 47000.0,
         "fuelAmount": 40.0,
         "fuelCost": 60.0,
         "fuelType": "Gasoline",
@@ -12,7 +12,7 @@
     {
         "id": 2,
         "refillDate": "20 Aug 23",
-        "odometerReading": 49500.0,
+        "odometerReading": 50200.0,
         "fuelAmount": 35.0,
         "fuelCost": 50.0,
         "fuelType": "Diesel",
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "refillDate": "10 Aug 23",
-        "odometerReading": 49000.0,
+        "odometerReading": 50450.0,
         "fuelAmount": 30.0,
         "fuelCost": 45.0,
         "fuelType": "Gasoline",
@@ -32,7 +32,7 @@
     {
         "id": 4,
         "refillDate": "25 Jul 23",
-        "odometerReading": 48000.0,
+        "odometerReading": 50600.0,
         "fuelAmount": 25.0,
         "fuelCost": 40.0,
         "fuelType": "Electric",
@@ -42,7 +42,7 @@
     {
         "id": 5,
         "refillDate": "10 Jul 23",
-        "odometerReading": 47000.0,
+        "odometerReading": 50800.0,
         "fuelAmount": 38.0,
         "fuelCost": 55.0,
         "fuelType": "Gasoline",

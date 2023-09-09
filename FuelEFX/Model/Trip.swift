@@ -18,7 +18,7 @@ class Trip: Identifiable, Codable {
     let endLocation: String
     let purpose: String
     let notes: String
- 
+    
     // Initialize the Fuel object with provided values.
     init(id: Int, tripDate: String, startOdometer: Double, endOdometer: Double, startLocation: String, endLocation: String, purpose: String, notes: String){
         self.id = id

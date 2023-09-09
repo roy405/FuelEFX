@@ -10,7 +10,7 @@ import Foundation
 // Enumeration defining the potential errors that can occur in the store.
 enum StoreError: Int, Identifiable, Error, LocalizedError {
     var id: Int { rawValue } // Identifiable conformance, using the raw Int value as ID.
-
+    
     // Enum cases representing different types of errors.
     case loadingFailed = 1
     case nofilefound

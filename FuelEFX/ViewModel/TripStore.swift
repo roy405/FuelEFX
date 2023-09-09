@@ -143,11 +143,11 @@ class TripStore: ObservableObject, Store {
         if startOdometer.isEmpty || endOdometer.isEmpty || startLocation.isEmpty || endLocation.isEmpty || purpose.isEmpty {
             return (false, "Validation Error", "All fields are required. Please fill them out before saving.")
         }
-
+        
         guard let _ = Double(startOdometer), let _ = Double(endOdometer) else {
             return (false, "Input Error", "Start and End Odometer readings must be valid numbers.")
         }
-
+        
         return (true, "", "")
     }
     
@@ -163,13 +163,13 @@ class TripStore: ObservableObject, Store {
         let stringDate = dateFormatter.string(from: date)
         let newId = records.count + 1
         let tripRecord = Trip(id: newId,
-                             tripDate: stringDate,
-                             startOdometer: odometerStart,
-                             endOdometer: odometerEnd,
-                             startLocation: startLocation,
-                             endLocation: endLocation,
-                             purpose: purpose,
-                             notes: notes)
+                              tripDate: stringDate,
+                              startOdometer: odometerStart,
+                              endOdometer: odometerEnd,
+                              startLocation: startLocation,
+                              endLocation: endLocation,
+                              purpose: purpose,
+                              notes: notes)
         addRecord(tripRecord)
         
         return (true, "Success", "Trip entry has been saved successfully.")

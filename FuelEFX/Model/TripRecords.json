@@ -3,7 +3,7 @@
     {
         "id": 1,
         "tripDate": "5 Sep 23",
-        "startOdometer": 50000.0,
+        "startOdometer": 40700.0,
         "endOdometer": 50200.0,
         "startLocation": "Home",
         "endLocation": "Office",

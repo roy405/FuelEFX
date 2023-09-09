@@ -11,51 +11,52 @@ import SwiftUI
 struct FuelEFXApp: App {
     @StateObject private var fuelStore = FuelStore() //Fuel Viewmodel
     @StateObject private var tripStore = TripStore() //Trup Viewmodel
-        
+    
     var body: some Scene {
         WindowGroup {
             //Tab-based navigation for the overall application
             TabView {
-                ScrollView{
-                    // Home (Dashboard) View with all Charts
+                NavigationView{
+                    // Home (Dashboard) View with all Charts (analytics)
                     Home()
+                        .navigationTitle("EFX Analytics")
                 }
-            .tabItem{
-            Label("Home", systemImage: "house.fill")
+                .tabItem{
+                    Label("Home", systemImage: "house.fill")
                 }
-            NavigationView {
-                // Fuel List View
-                FuelList()
-                .navigationTitle("Fuel Refill History")
-            }
-            .environmentObject(fuelStore)
-            .tabItem {
-                Label("Fuel List", systemImage: "list.clipboard")
+                NavigationView {
+                    // Fuel List View
+                    FuelList()
+                        .navigationTitle("Fuel Refill History")
                 }
-            NavigationView {
-                // Trip List View
-                TripList()
-                .navigationTitle("Trip History")
-            }
-            .environmentObject(tripStore)
-            .tabItem {
-                Label("Trip History", systemImage: "doc.fill")
+                .environmentObject(fuelStore)
+                .tabItem {
+                    Label("Fuel List", systemImage: "list.clipboard")
                 }
-            NavigationView {
-                // Trip Form View
-                TripForm(viewModel: tripStore)
-            }
-            .environmentObject(tripStore)
-            .tabItem{
-                Label("Add Trip", systemImage:"road.lanes.curved.left")
+                NavigationView {
+                    // Trip List View
+                    TripList()
+                        .navigationTitle("Trip History")
                 }
-            NavigationView{
-                // Fuel Form View
-                FuelForm(viewModel: fuelStore)
-            }
-            .environmentObject(fuelStore)
-            .tabItem{
-                Label("Add Fuel", systemImage: "fuelpump.circle.fill")
+                .environmentObject(tripStore)
+                .tabItem {
+                    Label("Trip History", systemImage: "doc.fill")
+                }
+                NavigationView {
+                    // Trip Form View
+                    TripForm(viewModel: tripStore)
+                }
+                .environmentObject(tripStore)
+                .tabItem{
+                    Label("Add Trip", systemImage:"road.lanes.curved.left")
+                }
+                NavigationView{
+                    // Fuel Form View
+                    FuelForm(viewModel: fuelStore)
+                }
+                .environmentObject(fuelStore)
+                .tabItem{
+                    Label("Add Fuel", systemImage: "fuelpump.circle.fill")
                 }
             }
         }

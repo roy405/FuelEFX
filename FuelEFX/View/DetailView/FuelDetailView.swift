@@ -20,7 +20,7 @@ struct FuelDetailView: View {
     @State private var fuelType: String
     @State private var refillLocation: String
     @State private var notes: String
-        
+    
     var fuel: Fuel // The fuel record being displayed/edited.
     
     // State properties for displaying alerts.
@@ -83,20 +83,21 @@ struct FuelDetailView: View {
                     Text(notes)
                 }
             }
-    
-           // Buttons for editing, saving, and deleting fuel records.
+            
+            // Buttons for editing, saving, and deleting fuel records.
             Group {
                 if isEditing {
                     Button("Save Changes") {
+                        // Calling the viewmodel validatedEditFields method to validate the edited inputs
                         let validationResult = fuelStore.validateEditFields(refillDate: refillDate, odometerReading: odometerReading, fuelAmount: fuelAmount, fuelCost: fuelCost, fuelType: fuelType, refillLocation: refillLocation)
-                                                
+                        // If validationResult returns true, calling the saveEditedTripChanges function to save changes, else alert.
                         if validationResult.isValid {
                             _ = fuelStore.saveEditedFuelChanges(fuel: fuel, refillDate: refillDate, odometerReading: odometerReading, fuelAmount: fuelAmount, fuelCost: fuelCost, fuelType: fuelType, refillLocation: refillLocation, notes: notes)
                             isEditing = false
                         } else {
-                        alertTitle = validationResult.alertTitle
-                        alertMessage = validationResult.alertMessage
-                        showAlert = true
+                            alertTitle = validationResult.alertTitle
+                            alertMessage = validationResult.alertMessage
+                            showAlert = true
                         }
                     }
                 } else {
@@ -104,7 +105,7 @@ struct FuelDetailView: View {
                         isEditing = true
                     }
                 }
-
+                
                 Button("Delete") {
                     deleteFuelRecord()
                 }

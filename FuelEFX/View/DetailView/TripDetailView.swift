@@ -80,7 +80,9 @@ struct TripDetailView: View {
             Group {
                 if isEditing {
                     Button("Save Changes") {
+                        // Calling the viewmodel validatedEditFields method to validate the edited inputs
                         let validationResult = tripStore.validatedEditFields(tripDate: tripDate, startOdometer: startOdometer, endOdometer: endOdometer, startLocation: startLocation, endLocation: endLocation, purpose: purpose, notes: notes)
+                        // If validationResult returns true, calling the saveEditedTripChanges function to save changes, else alert.
                         if validationResult.isValid {
                             _ = tripStore.saveEditedTripChanges(trip: trip, tripDate: tripDate, startOdometer: startOdometer, endOdometer: endOdometer, startLocation: startLocation, endLocation: endLocation, purpose: purpose, notes: notes)
                             isEditing = false
@@ -95,7 +97,7 @@ struct TripDetailView: View {
                         isEditing = true
                     }
                 }
-
+                
                 Button("Delete") {
                     deleteTripRecord()
                 }
@@ -106,7 +108,7 @@ struct TripDetailView: View {
             }
         }.navigationBarTitle("Trip Record Details")
     }
-        
+    
     // Function to delete the current trip record.
     private func deleteTripRecord() {
         tripStore.deleteRecord(trip)

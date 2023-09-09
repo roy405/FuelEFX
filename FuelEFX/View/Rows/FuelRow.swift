@@ -40,20 +40,20 @@ struct FuelRecordRow: View {
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 Text(fuelRecord.refillLocation)
-                    .font(.system(size: 14)) 
+                    .font(.system(size: 14))
                     .fontWeight(.semibold)
             }
         }
         .padding(.vertical, 12)
         .padding(.horizontal, 16)
     }
-
+    
     // DateFormatter to format trip dates.
     private var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .none
-            return formatter
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
     }
 }
 

@@ -49,11 +49,11 @@ struct TripRecordRow: View {
     
     // DateFormatter to format trip dates.
     private var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .none
-            return formatter
-        }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }
 }
 
 // SwiftUI Preview for the TripRecordRow view.

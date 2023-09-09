@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C54720F2AAC1DAF004C67C4 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 1C54720E2AAC1DAF004C67C4 /* SwiftUICharts */; };
+		1C5472112AAC1E39004C67C4 /* FuelTripAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5472102AAC1E39004C67C4 /* FuelTripAnalytics.swift */; };
 		1C5D9D622AA70EAE0086F3AA /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5D9D612AA70EAE0086F3AA /* Exceptions.swift */; };
 		1C9F6D4D2AA4631C004CE88C /* FuelEFXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F6D4C2AA4631C004CE88C /* FuelEFXApp.swift */; };
 		1C9F6D512AA4631D004CE88C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C9F6D502AA4631D004CE88C /* Assets.xcassets */; };
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C5472102AAC1E39004C67C4 /* FuelTripAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTripAnalytics.swift; sourceTree = "<group>"; };
 		1C5D9D612AA70EAE0086F3AA /* Exceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
 		1C9F6D492AA4631C004CE88C /* FuelEFX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuelEFX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C9F6D4C2AA4631C004CE88C /* FuelEFXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEFXApp.swift; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C54720F2AAC1DAF004C67C4 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +137,7 @@
 				1C9F6D622AA46567004CE88C /* Trip.swift */,
 				1C9F6D642AA46576004CE88C /* FuelRecords.json */,
 				1C9F6D662AA4658A004CE88C /* TripRecords.json */,
+				1C5472102AAC1E39004C67C4 /* FuelTripAnalytics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +233,9 @@
 			dependencies = (
 			);
 			name = FuelEFX;
+			packageProductDependencies = (
+				1C54720E2AAC1DAF004C67C4 /* SwiftUICharts */,
+			);
 			productName = FuelEFX;
 			productReference = 1C9F6D492AA4631C004CE88C /* FuelEFX.app */;
 			productType = "com.apple.product-type.application";
@@ -278,6 +286,9 @@
 				Base,
 			);
 			mainGroup = 1C9F6D402AA4631C004CE88C;
+			packageReferences = (
+				1C54720D2AAC1DAF004C67C4 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 1C9F6D4A2AA4631C004CE88C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -315,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C5D9D622AA70EAE0086F3AA /* Exceptions.swift in Sources */,
+				1C5472112AAC1E39004C67C4 /* FuelTripAnalytics.swift in Sources */,
 				1C9F6D692AA46706004CE88C /* Store.swift in Sources */,
 				1C9F6D782AA469AA004CE88C /* FuelList.swift in Sources */,
 				1C9F6D722AA468BC004CE88C /* FuelDetailView.swift in Sources */,
@@ -592,6 +604,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C54720D2AAC1DAF004C67C4 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C54720E2AAC1DAF004C67C4 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C54720D2AAC1DAF004C67C4 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C9F6D412AA4631C004CE88C /* Project object */;
 }

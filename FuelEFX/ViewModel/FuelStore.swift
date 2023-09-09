@@ -96,7 +96,7 @@ class FuelStore: ObservableObject, Store {
         } catch StoreError.encodeFailed {
             self.fuelError = StoreError.encodeFailed
         }
-
+        
     }
     
     // Load records from file.
@@ -140,44 +140,44 @@ class FuelStore: ObservableObject, Store {
     
     // Function to validate the input from user when creating a new fuel record
     func isValidInput(odometerReading: String, fuelAmount: String, fuelCost: String, fuelType: String, location: String) -> (Bool, title: String, message: String) {
-            
-            if odometerReading.isEmpty || fuelAmount.isEmpty || fuelCost.isEmpty || fuelType.isEmpty || location.isEmpty {
-                return (false, "Validation Error", "All fields are required. Please fill them out before saving.")
-            }
-            
-            guard let _ = Double(odometerReading), let _ = Double(fuelAmount), let _ = Double(fuelCost) else {
-                return (false, "Input Error", "Odometer reading, fuel amount, and fuel cost must be valid numbers.")
-            }
-            
-            return (true, "Success", "Input is valid.")
+        
+        if odometerReading.isEmpty || fuelAmount.isEmpty || fuelCost.isEmpty || fuelType.isEmpty || location.isEmpty {
+            return (false, "Validation Error", "All fields are required. Please fill them out before saving.")
         }
-
+        
+        guard let _ = Double(odometerReading), let _ = Double(fuelAmount), let _ = Double(fuelCost) else {
+            return (false, "Input Error", "Odometer reading, fuel amount, and fuel cost must be valid numbers.")
+        }
+        
+        return (true, "Success", "Input is valid.")
+    }
+    
     // Function to save fuel entry when creating a new Fuel Record
     func saveFuelEntry(date: Date, odometerReading: String, fuelAmount: String, fuelCost: String, fuelType: String, location: String, notes: String) -> (Bool, title: String, message: String) {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "d MMM yy"
-            guard let odometer = Double(odometerReading),
-                  let amount = Double(fuelAmount),
-                  let cost = Double(fuelCost) else {
-                return (false, "Input Error", "Start and End Odometer readings must be valid numbers.")
-            }
-            
-            let stringDate = dateFormatter.string(from: date)
-            let newId = records.count + 1
-            
-            let fuelRecord = Fuel(id: newId,
-                                  refillDate: stringDate,
-                                  odometerReading: odometer,
-                                  fuelAmount: amount,
-                                  fuelCost: cost,
-                                  fuelType: fuelType,
-                                  refillLocation: location,
-                                  notes: notes)
-            
-            addRecord(fuelRecord)
-            
-            return (true, "Success", "Fuel entry has been saved successfully.")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMM yy"
+        guard let odometer = Double(odometerReading),
+              let amount = Double(fuelAmount),
+              let cost = Double(fuelCost) else {
+            return (false, "Input Error", "Start and End Odometer readings must be valid numbers.")
         }
+        
+        let stringDate = dateFormatter.string(from: date)
+        let newId = records.count + 1
+        
+        let fuelRecord = Fuel(id: newId,
+                              refillDate: stringDate,
+                              odometerReading: odometer,
+                              fuelAmount: amount,
+                              fuelCost: cost,
+                              fuelType: fuelType,
+                              refillLocation: location,
+                              notes: notes)
+        
+        addRecord(fuelRecord)
+        
+        return (true, "Success", "Fuel entry has been saved successfully.")
+    }
     
     // Function to validate the data from the FuelDetailView edit process
     func validateEditFields(refillDate: String, odometerReading: String, fuelAmount: String, fuelCost: String, fuelType: String, refillLocation: String) -> (isValid: Bool, alertTitle: String, alertMessage: String) {
