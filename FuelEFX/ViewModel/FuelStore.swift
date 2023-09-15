@@ -9,8 +9,10 @@ import Foundation
 
 // Class FuelStore that extends the Store protocol and conforms to the ObservableObject protocol to be usable by SwiftUI views.
 class FuelStore: ObservableObject, Store {
+    // A typealias to specify the kind of record this store will handle.
     typealias RecordType = Fuel //Define the type of record
     
+    // These published properties will notify any observers when their values change.
     @Published var records: [Fuel] // All fuel records
     @Published var fuelError: StoreError? // Error state.
     
@@ -112,6 +114,7 @@ class FuelStore: ObservableObject, Store {
                     throw StoreError.decodefailed
                 }
             } else {
+                // If the file doesn't exist in the documents directory, try loading from the app bundle.
                 guard let bundledURL = Bundle.main.url(forResource: filename, withExtension: nil) else {
                     self.fuelError = StoreError.nofilefound
                     throw StoreError.nofilefound
@@ -140,7 +143,8 @@ class FuelStore: ObservableObject, Store {
     
     // Function to validate the input from user when creating a new fuel record
     func isValidInput(odometerReading: String, fuelAmount: String, fuelCost: String, fuelType: String, location: String) -> (Bool, title: String, message: String) {
-        
+        // Check if fields are empty or if they contain invalid data.
+        // Returns a tuple containing a boolean and messages that describe the validation result.
         if odometerReading.isEmpty || fuelAmount.isEmpty || fuelCost.isEmpty || fuelType.isEmpty || location.isEmpty {
             return (false, "Validation Error", "All fields are required. Please fill them out before saving.")
         }
@@ -154,6 +158,7 @@ class FuelStore: ObservableObject, Store {
     
     // Function to save fuel entry when creating a new Fuel Record
     func saveFuelEntry(date: Date, odometerReading: String, fuelAmount: String, fuelCost: String, fuelType: String, location: String, notes: String) -> (Bool, title: String, message: String) {
+        // Create and store a new Fuel record using the provided input data.
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM yy"
         guard let odometer = Double(odometerReading),
@@ -181,7 +186,8 @@ class FuelStore: ObservableObject, Store {
     
     // Function to validate the data from the FuelDetailView edit process
     func validateEditFields(refillDate: String, odometerReading: String, fuelAmount: String, fuelCost: String, fuelType: String, refillLocation: String) -> (isValid: Bool, alertTitle: String, alertMessage: String) {
-        
+        // Check if fields are empty or if they contain invalid data.
+        // Returns a tuple containing a boolean and messages that describe the validation result.
         guard !refillDate.isEmpty, !fuelType.isEmpty, !refillLocation.isEmpty else {
             return (false, "Missing Fields", "Please fill all the fields.")
         }
@@ -195,6 +201,7 @@ class FuelStore: ObservableObject, Store {
     
     // Function to create fuel object with the new updated inputs and pass onto Store function
     func saveEditedFuelChanges(fuel: Fuel, refillDate: String, odometerReading: String, fuelAmount: String, fuelCost: String, fuelType: String, refillLocation: String, notes: String) -> Bool {
+        // Create and store an edited Fuel record using the provided input data.
         let editedFuelRecord = Fuel(
             id: fuel.id,
             refillDate: refillDate,

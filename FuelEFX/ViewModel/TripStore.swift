@@ -9,8 +9,10 @@ import Foundation
 
 // Class TripStore that extends the Store protocol and conforms to the ObservableObject protocol to be usable by SwiftUI views.
 class TripStore: ObservableObject, Store {
+    //A typealias to specify the ekind of record this store will handle
     typealias RecordType = Trip //Define the type of record
     
+    // These properties will notify any observers when their values change.
     @Published var records: [Trip] = []// All fuel records
     @Published var tripError: StoreError? // Error state.
     
@@ -111,6 +113,7 @@ class TripStore: ObservableObject, Store {
                     throw StoreError.decodefailed
                 }
             } else {
+                //If the file doesn't exist in the documents directory, try loading from the app bundle.
                 guard let bundledURL = Bundle.main.url(forResource: filename, withExtension: nil) else {
                     self.tripError = StoreError.nofilefound
                     throw StoreError.nofilefound
@@ -140,6 +143,8 @@ class TripStore: ObservableObject, Store {
     
     // Function to validate the input from user when creating a new trip record
     func isValidInput(startOdometer: String, endOdometer: String, startLocation: String, endLocation: String, purpose: String) -> (Bool, title: String, message: String) {
+        // Check if fields are empty or if they contain invalid data.
+        // Returns a tuple containing a boolean and messages that describe the validation result.
         if startOdometer.isEmpty || endOdometer.isEmpty || startLocation.isEmpty || endLocation.isEmpty || purpose.isEmpty {
             return (false, "Validation Error", "All fields are required. Please fill them out before saving.")
         }
@@ -153,6 +158,7 @@ class TripStore: ObservableObject, Store {
     
     // Function to save trip entry when creating a new Trip Record
     func saveTripEntry(date: Date, startOdometer: String, endOdometer: String, startLocation: String, endLocation: String, purpose: String, notes: String) -> (Bool, title: String, message: String) {
+        // Create and store a new Fuel record using the provided input data
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM yy"
         
@@ -177,7 +183,8 @@ class TripStore: ObservableObject, Store {
     
     // Function to validate the data from the TripDetailView edit
     func validatedEditFields(tripDate: String, startOdometer: String, endOdometer: String, startLocation: String, endLocation: String, purpose: String, notes: String) -> (isValid: Bool, alertTitle: String, alertMessage: String){
-        
+        // Check if fields are empty or if they contain invalid data.
+        // Returns a tuple containing a boolean and message that describe the validation result
         guard !tripDate.isEmpty, !startLocation.isEmpty, !endLocation.isEmpty, !purpose.isEmpty else {
             return (false, "Missing Fields", "Please fill all the fields.")
         }
@@ -191,6 +198,7 @@ class TripStore: ObservableObject, Store {
     
     // Function to create trip object with the new updated inputs and pass onto Store function
     func saveEditedTripChanges(trip: Trip, tripDate: String, startOdometer: String, endOdometer: String, startLocation: String, endLocation: String, purpose: String, notes: String) -> Bool {
+        // Create and store an edited Trip record using the provided input data
         let editedTripRecord = Trip(
             id: trip.id,
             tripDate: tripDate,
